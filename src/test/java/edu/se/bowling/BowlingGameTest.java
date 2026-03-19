@@ -1,13 +1,13 @@
 package edu.se.bowling;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class BowlingGameTest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 
