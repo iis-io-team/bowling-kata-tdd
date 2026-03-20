@@ -11,8 +11,10 @@ public class Game {
 
 	public int score() {
 		int score = 0;
-		for (int rollIdx = 0; rollIdx < rolls.length; rollIdx++) {
-			score += rolls[rollIdx];
+		int rollIdx = 0;
+		for (int frame = 0; frame < 10; frame++) {
+			score += rolls[rollIdx] + rolls[rollIdx + 1];
+			rollIdx += 2;
 		}
 		return score;
 	}
