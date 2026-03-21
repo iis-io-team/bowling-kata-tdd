@@ -17,10 +17,17 @@ public class Game {
 		int score = 0;
 		int rollIdx = 0;
 		for (int frame = 0; frame < NUMBER_OF_FRAMES; frame++) {
-			score += rolls[rollIdx] + rolls[rollIdx + 1];
-			if (isSpare(rollIdx))
-				score += spareBonus(rollIdx);
-			rollIdx += 2;
+			if (rolls[rollIdx] == NUMBER_OF_PINS) {
+				score += NUMBER_OF_PINS + rolls[rollIdx + 1] +
+						rolls[rollIdx + 2];
+				rollIdx++;
+			} else if (isSpare(rollIdx)) {
+				score += NUMBER_OF_PINS + spareBonus(rollIdx);
+				rollIdx += 2;
+			} else {
+				score += rolls[rollIdx] + rolls[rollIdx + 1];
+				rollIdx += 2;
+			}
 		}
 		return score;
 	}
