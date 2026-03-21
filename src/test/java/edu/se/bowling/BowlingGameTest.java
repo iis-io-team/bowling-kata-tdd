@@ -43,6 +43,12 @@ public class BowlingGameTest {
 		assertEquals(24, g.score());
 	}
 
+	@Test
+	public void perfectGameScores300() {
+		rollMany(20, 10);
+		assertEquals(300, g.score());
+	}
+	
 	private void rollStrike() {
 		g.roll(10);
 	}
