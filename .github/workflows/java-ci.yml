@@ -28,7 +28,7 @@ jobs:
 
       - name: Upload PMD XML report
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: pmd-report
           path: target/pmd.xml
@@ -37,7 +37,7 @@ jobs:
         
       - name: Upload Surefire reports
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: surefire-reports
           path: target/surefire-reports
@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload Checkstyle report
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: checkstyle-report
           path: |
@@ -54,14 +54,7 @@ jobs:
             target/site/checkstyle.html
           if-no-files-found: warn
           retention-days: 14
-
-      - name: Publish PMD report to PR
-        if: always() && github.event_name == 'pull_request'
-        uses: jwgmeligmeyling/pmd-github-action@master
-        with:
-          path: '**/pmd.xml'  # Maven PMD generates this file automatically
-          title: 'PMD Code Quality Report'
-          
+        
       - name: Fail job if verify failed
         if: steps.verify.outcome == 'failure'
         run: exit 1
