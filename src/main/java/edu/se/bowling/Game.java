@@ -16,8 +16,8 @@ public class Game {
 		int score = 0;
 		int rollIdx = 0;
 		for (int frameIdx = 0; frameIdx < NUMBER_OF_FRAMES; frameIdx++) {
-			if (rolls[rollIdx] == NUMBER_OF_PINS) {// strike
-				score += NUMBER_OF_PINS + rolls[rollIdx + 1] + rolls[rollIdx + 2];
+			if (isStrike(rollIdx)) {
+				score += NUMBER_OF_PINS + strikeBonus(rollIdx);
 				rollIdx++;
 			} else if (isSpare(rollIdx)) {
 				score += NUMBER_OF_PINS + spareBonus(rollIdx);
@@ -28,6 +28,14 @@ public class Game {
 			}
 		}
 		return score;
+	}
+
+	private int strikeBonus(int rollIdx) {
+		return rolls[rollIdx + 1] + rolls[rollIdx + 2];
+	}
+
+	private boolean isStrike(int rollIdx) {
+		return rolls[rollIdx] == NUMBER_OF_PINS;
 	}
 
 	private int spareBonus(int frameRollIdx) {

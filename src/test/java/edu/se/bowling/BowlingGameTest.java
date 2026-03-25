@@ -36,11 +36,15 @@ public class BowlingGameTest {
 
 	@Test
 	public void strikeScoresBonusTwoNextRolls() {
-		g.roll(10); //strike
+		rollStrike();
 		g.roll(4);
 		g.roll(3);
 		rollMany(16, 0);
 		assertEquals(24, g.score());
+	}
+
+	private void rollStrike() {
+		g.roll(10);
 	}
 
 	private void rollSpare() {
