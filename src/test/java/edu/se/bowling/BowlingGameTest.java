@@ -7,26 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BowlingGameTest {
 
+	private Game g;
+
 	@BeforeEach
 	public void setUp() throws Exception {
+		g = new Game();
 	}
 
 	@Test
 	public void gutterGameScoresZero() {
-		Game g = new Game();
-		for (int i = 0; i < 20; i++) {
-			g.roll(0);
-		}
+		rollMany(20, 0);
 		assertEquals(0, g.score());
 	}
 
 	@Test
 	public void allOneGameScoresTwenty() {
-		Game g = new Game();
-		for (int i = 0; i < 20; i++) {
-			g.roll(1);
-		}
+		rollMany(20, 1);
 		assertEquals(20, g.score());
 	}
 
+	private void rollMany(int rolls, int pins) {
+		for (int i = 0; i < rolls; i++) {
+			g.roll(pins);
+		}
+	}
 }
