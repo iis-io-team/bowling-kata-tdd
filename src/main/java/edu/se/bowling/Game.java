@@ -13,6 +13,8 @@ public class Game {
 		int score = 0;
 		int rollIdx = 0;
 		for (int frameIdx = 0; frameIdx < 10; frameIdx++) {
+			if (rolls[rollIdx] + rolls[rollIdx + 1] == 10) // spare
+				score += rolls[rollIdx + 2]; //spare bonus
 			score += rolls[rollIdx] + rolls[rollIdx + 1];
 			rollIdx += 2;
 		}

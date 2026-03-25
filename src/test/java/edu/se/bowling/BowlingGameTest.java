@@ -26,6 +26,15 @@ public class BowlingGameTest {
 		assertEquals(20, g.score());
 	}
 
+	@Test
+	public void spareScoresBonusNextRoll() {
+		g.roll(5);
+		g.roll(5); //spare
+		g.roll(3);
+		rollMany(17, 0);
+		assertEquals(16, g.score());
+	}
+
 	private void rollMany(int rolls, int pins) {
 		for (int i = 0; i < rolls; i++) {
 			g.roll(pins);
