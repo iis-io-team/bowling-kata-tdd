@@ -27,6 +27,12 @@ public class BowlingGameTest {
 	}
 
 	@Test
+	public void perfectGameScores300() {
+		rollMany(12, 10);
+		assertEquals(300, g.score());
+	}
+	
+	@Test
 	public void spareScoresBonusNextRoll() {
 		rollSpare();
 		g.roll(3);
