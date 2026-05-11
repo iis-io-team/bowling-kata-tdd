@@ -12,7 +12,10 @@ public class Game {
 	public int score() {
 		int score = 0;
 		int i = 0;
-		for (int frame = 0; frame < 10; frame++) {			
+		for (int frame = 0; frame < 10; frame++) {
+			if (rolls[i] + rolls[i + 1] == 10) { // spare
+				score += rolls[i + 2];
+			}
 			score += rolls[i] + rolls[i + 1];
 			i += 2;
 		}
