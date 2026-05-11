@@ -19,7 +19,7 @@ public class Game {
 			if (isStrike(i)) {
 				score += NUMBER_OF_PINS + strikeBonus(i);
 				i += 1;
-			} if (isSpare(i)) {
+			} else if (isSpare(i)) {
 				score += NUMBER_OF_PINS + spareBonus(i);
 				i += 2;
 			} else {
